@@ -1,19 +1,18 @@
 <?php
-// Database connection details
-$servername = "localhost"; // Replace with your server name
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
-$dbname = "mcq"; // Replace with your database name
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "mcq"; 
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Add Quiz Question
+
 if (isset($_POST['add_quiz'])) {
     $question = $_POST['question'];
     $option1 = $_POST['option1'];
@@ -31,7 +30,7 @@ if (isset($_POST['add_quiz'])) {
     }
 }
 
-// Delete Quiz Question
+
 if (isset($_GET['delete_id'])) {
     $id = $_GET['delete_id'];
     $sql = "DELETE FROM quiz_questions WHERE id = $id";
@@ -181,7 +180,7 @@ if (isset($_GET['delete_id'])) {
             </thead>
             <tbody>
             <?php
-// Fetch all quiz questions from the database
+
 $sql = "SELECT * FROM quiz_questions";
 $result = $conn->query($sql);
 
@@ -208,7 +207,7 @@ if ($result->num_rows > 0) {
     </div>
 
     <?php
-    // Close the connection
+   
     $conn->close();
     ?>
 

@@ -14,7 +14,7 @@
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(-135deg, #c850c0, #4158d0);
             color: white;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto; 
         }
 
         .navbar {
@@ -32,7 +32,7 @@
         }
 
         .container {
-            margin-top: 20px; /* Space from navbar */
+            margin-top: 20px; 
             padding: 20px;
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.6);
@@ -68,7 +68,7 @@
             background: rgba(255, 255, 255, 0.2);
             padding: 20px;
             border-radius: 10px;
-            margin: 10px 0; /* Spacing between testimonials */
+            margin: 10px 0; 
         }
 
         footer {
@@ -81,7 +81,7 @@
             display: flex;
             justify-content: space-around;
             margin: 20px 0;
-            flex-wrap: wrap; /* Allow wrapping */
+            flex-wrap: wrap; 
         }
 
         .stat-card {
@@ -91,14 +91,14 @@
             flex: 1;
             margin: 0 10px;
             text-align: center;
-            min-width: 150px; /* Minimum width */
+            min-width: 150px; 
         }
 
         .featured-quizzes {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Center the featured quizzes */
-            margin-top: 20px; /* Add margin for spacing */
+            justify-content: center; 
+            margin-top: 20px; 
         }
 
         .quiz-card {
@@ -106,7 +106,7 @@
             padding: 20px;
             border-radius: 10px;
             margin: 10px;
-            width: calc(30% - 20px); /* Adjust width for 3 columns */
+            width: calc(30% - 20px); 
             transition: transform 0.3s;
         }
 
@@ -220,7 +220,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Vendor JS Files -->
+
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/chart.js/chart.min.js"></script>
@@ -230,7 +230,7 @@
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
+
     <script src="assets/js/main.js"></script>
     
 </body>

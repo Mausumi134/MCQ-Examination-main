@@ -1,25 +1,23 @@
 <?php
-// Database connection
-// Database connection
 $servername = "localhost";
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
-$dbname = "mcq"; // Database name
+$username = "root";
+$password = ""; 
+$dbname = "mcq"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch questions from the database
-$sql = "SELECT id, question, option_a, option_b, option_c, option_d, correct_answer FROM sciencequizz"; // Updated table name
+
+$sql = "SELECT id, question, option_a, option_b, option_c, option_d, correct_answer FROM sciencequizz"; 
 $result = $conn->query($sql);
 
 $questions = [];
 if ($result->num_rows > 0) {
-    // Fetch all questions
+  
     while ($row = $result->fetch_assoc()) {
         $questions[] = [
             'question' => $row['question'],
@@ -29,7 +27,7 @@ if ($result->num_rows > 0) {
                 $row['option_c'],
                 $row['option_d'],
             ],
-            'correct_answer' => $row['correct_answer'] // Store the correct answer
+            'correct_answer' => $row['correct_answer'] 
         ];
     }
 } else {
@@ -53,7 +51,7 @@ $conn->close();
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(-135deg, #00c6ff, #0072ff);
             color: white;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto; 
         }
 
         .container {
@@ -96,11 +94,11 @@ $conn->close();
         #answer {
             margin-top: 15px;
             font-weight: bold;
-            display: none; /* Initially hide the answer display */
+            display: none; 
         }
 
         #results {
-            display: none; /* Initially hide the results display */
+            display: none;
         }
     </style>
 </head>
@@ -111,7 +109,7 @@ $conn->close();
         <div class="timer" id="timer">60</div>
         <div class="question" id="question"></div>
         <div id="options"></div>
-        <div id="answer"></div> <!-- Display answer here -->
+        <div id="answer"></div>
         <button class="btn btn-custom" id="nextBtn" style="display: none;">Next Question</button>
         <div id="results">
             <h2>Your Results</h2>
@@ -122,10 +120,10 @@ $conn->close();
 
     <script src="assets/js/jquery.min.js"></script>
     <script>
-        const questions = <?php echo json_encode($questions); ?>; // Pass PHP array to JavaScript
+        const questions = <?php echo json_encode($questions); ?>; 
 
         let currentQuestionIndex = 0;
-        let score = 0; // Initialize score
+        let score = 0; 
         let timerInterval;
         let timeLeft = 60;
 
@@ -146,37 +144,37 @@ $conn->close();
             clearInterval(timerInterval);
             timeLeft = 60;
             document.getElementById('timer').textContent = timeLeft;
-            document.getElementById('answer').style.display = 'none'; // Hide answer display
+            document.getElementById('answer').style.display = 'none'; 
             startTimer();
 
             const currentQuestion = questions[currentQuestionIndex];
             document.getElementById('question').textContent = currentQuestion.question;
             const optionsContainer = document.getElementById('options');
-            optionsContainer.innerHTML = ''; // Clear previous options
+            optionsContainer.innerHTML = '';
 
             currentQuestion.options.forEach((option, index) => {
                 const button = document.createElement('button');
                 button.textContent = option;
                 button.className = 'btn btn-custom option-button';
-                button.onclick = () => selectOption(index, currentQuestion); // Pass current question to selectOption
+                button.onclick = () => selectOption(index, currentQuestion); 
                 optionsContainer.appendChild(button);
             });
 
-            document.getElementById('nextBtn').style.display = 'none'; // Hide next button initially
+            document.getElementById('nextBtn').style.display = 'none'; 
         }
 
         function selectOption(selectedIndex, currentQuestion) {
-            const correctAnswer = currentQuestion.correct_answer; // Get correct answer as a letter
+            const correctAnswer = currentQuestion.correct_answer; 
             clearInterval(timerInterval);
 
             document.getElementById('answer').textContent = `Correct answer: ${correctAnswer}`;
-            document.getElementById('answer').style.display = 'block'; // Show answer display
+            document.getElementById('answer').style.display = 'block'; 
 
             if (String.fromCharCode(65 + selectedIndex) === correctAnswer) {
                 score++;
             }
 
-            document.getElementById('nextBtn').style.display = 'block'; // Show next button
+            document.getElementById('nextBtn').style.display = 'block'; 
         }
 
         function showNextQuestion() {
@@ -201,10 +199,10 @@ $conn->close();
 
         document.getElementById('nextBtn').addEventListener('click', showNextQuestion);
         document.getElementById('restartBtn').addEventListener('click', function () {
-            location.href = 'index.php'; // Redirect to index.php
+            location.href = 'index.php'; 
         });
 
-        // Start the quiz by showing the first question
+        
         showQuestion();
     </script>
 </body>

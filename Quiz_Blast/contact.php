@@ -73,22 +73,20 @@
 <body>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection
+    
     $conn = new mysqli('localhost', 'root', '', 'mcq');
 
-    // Check connection
     if ($conn->connect_error) {
         http_response_code(500);
         echo "Database connection failed";
         exit;
     }
 
-    // Form fields
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    // Insert into database
+    
     $stmt = $conn->prepare("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $name, $email, $message);
 
@@ -138,7 +136,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn btn-custom">Send Message</button>
     </form>
 
-    <!-- Placeholder for Success/Error Alert -->
     <div id="alertPlaceholder" class="mt-3"></div>
 </div>
 
@@ -147,15 +144,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p><a href="./about.php" class="text-white">About Us</a> | <a href="./contact.php" class="text-white">Contact Us</a></p>
 </footer>
 
-<!-- Load jQuery first -->
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- AJAX for Form Submission with Alert Display -->
 <script>
     $(document).ready(function() {
         $('#contactForm').submit(function(e) {
-            e.preventDefault(); // Prevent page reload
+            e.preventDefault(); 
 
             $.ajax({
                 type: 'POST',
@@ -168,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                         '</div>'
                     );
-                    $('#contactForm')[0].reset(); // Reset form fields
+                    $('#contactForm')[0].reset(); 
                 },
                 error: function() {
                     $('#alertPlaceholder').html(

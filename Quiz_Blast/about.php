@@ -31,7 +31,7 @@
         }
 
         .container {
-            margin-top: 20px; /* Space from navbar */
+            margin-top: 20px; 
             padding: 20px;
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.6);
