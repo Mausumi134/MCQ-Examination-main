@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "mcq"; 
-
+$servername="sql203.infinityfree.com";
+$username="if0_37699836";
+$password="LE6eGyY2hsEXxc";
+$dbname="if0_37699836_mcq";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 
