@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
        
-        header('Location: login.php?signup=success');
+        header('Location: index.php?signup=success');
         exit();
     } else {
      
