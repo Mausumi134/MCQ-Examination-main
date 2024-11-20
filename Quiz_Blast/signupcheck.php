@@ -14,13 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['uname'];
     $password = $_POST['pwd'];
 
-  
     if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z]).{5,}$/', $username)) {
         header('Location: signup.php?error=invalid_username');
         exit();
     }
 
-    if (strlen($password) < 8) {
+    // Validate password step-by-step
+    if (strlen($password) < 4) {
         header('Location: signup.php?error=password_too_short');
         exit();
     } else if (!preg_match('/[A-Z]/', $password)) {
@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-   
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
