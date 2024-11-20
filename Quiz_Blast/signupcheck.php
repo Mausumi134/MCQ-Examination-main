@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['uname'];
     $password = $_POST['pwd'];
 
-    // Validate username
     if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z]).{5,}$/', $username)) {
         header('Location: signup.php?error=invalid_username');
         exit();
@@ -38,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
