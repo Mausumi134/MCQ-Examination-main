@@ -1,68 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>User Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body, html {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(-135deg, #c850c0, #4158d0);
+    }
+
+    .container {
+        width: 70%;
+        height: 80vh;
+        display: flex;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider-container {
+        width: 97%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slider {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 1.5s ease-in-out;
+    }
+
+    .slides {
+        display: flex;
+        width: 100%;
+    }
+
+    .slides img {
+        width: 100%;
+        flex-shrink: 0;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .login-form {
+        width: 50%;
+        padding: 40px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #0a0d0f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0cdf61;
+        color: rgb(255, 255, 255);
+        transition: 1s;
+    }
+
+    .signup-link {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .signup-link a {
+        color: #18b875;
+        text-decoration: none;
+    }
+
+    .signup-link a:hover {
+        text-decoration: underline;
+    }
+    .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+  </style>
 </head>
 <body>
-
-<nav class="navbar navbar-light navbar-expand-md" style="color: var(--indigo);background: #242226;">
-    <div class="container-fluid">
-    <a class="navbar-brand" href="index.php" style="color: blue; font-weight: bold;">QUIZ Blast</a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="about.php" style="color:aliceblue">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.php" style="color:aliceblue">Contact Us</a></li>     
-            </ul>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <img src="assets/img/my_logo.jpg" alt="" width="70" height="70">			
-                </ul>		  
-            </div>
+  <div class="container">
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slides">
+          <img src="assets/img/quiz1.jpg" alt="Slide 1">
+          <img src="assets/img/quiz2.jpg" alt="Slide 2">
+          <img src="assets/img/quiz3.jpg" alt="Slide 3">
         </div>
+      </div>
     </div>
-</nav>
-
-<div>
-    <div class="login-container">
-        <div class="login-box">
-            <form class="login-form" action="logincheck.php" method="post">
-                <span class="login-form-title">User Login</span>
-
-                <div class="input-style" data-validate="Username is required">
-                    <input class="input-box" type="text" placeholder="Username" id="uname" name="uname" required>
-                    <span class="input-hover"></span>
-                    <span class="input-symbol">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </span>
-                </div>
-
-                <div class="input-style" data-validate="Password is required">
-                    <input class="input-box" type="password" placeholder="Password" id="pwd" name="pwd" required>
-                    <span class="input-hover"></span>
-                    <span class="input-symbol">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                    </span>
-                </div>
-                
-                <div class="login-container-form-btn">
-                    <button class="login-form-btn">Login</button>
-                </div>
-            </form>
-            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+    <div class="login-form">
+        <center><img src="assets/img/my_logo.jpg" alt="" width="70" height="70"></center>
+      <h2>Login</h2>
+      <form action="logincheck.php" method="post">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input class="input-box" type="text" placeholder="Username" id="uname" name="uname" required>
         </div>
-    </div>
-</div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input class="input-box" type="password" placeholder="Password" id="pwd" name="pwd" required>
+        </div>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <button type="submit">Login</button>
+        <p class="signup-link">Don't have an account? <a href="signup.php">Sign up here</a></p>
+        <?php
+        if (isset($_GET['error'])) {
+            echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
+        }
+        ?>
+      </form>
+    </div>
+  </div>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelector('.slider');
+    const totalSlides = document.querySelectorAll('.slides img').length;
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 4000);
+  </script>
 </body>
 </html>
