@@ -45,7 +45,7 @@ To set up Quiz Blast on your local machine, follow these steps:
      $servername = "localhost";
      $username = "your_username"; // Replace with your MySQL username
      $password = "your_password"; // Replace with your MySQL password
-     $dbname = "mcq_software"; // The database name
+     $dbname = "mcq"; // The database name
      ```
 
 6. **Access the Application**:
