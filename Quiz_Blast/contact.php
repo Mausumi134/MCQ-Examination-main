@@ -74,7 +74,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    $conn = new mysqli('sql203.infinityfree.com', 'if0_37699836', 'LE6eGyY2hsEXxc', 'if0_37699836_mcq');
+    $conn = new mysqli('localhost', 'root', '', 'mcq');
 
     if ($conn->connect_error) {
         http_response_code(500);
